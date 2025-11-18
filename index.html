@@ -7,55 +7,41 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
-body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-.hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
-.section-title { font-size: 2.25rem; font-weight: 800; text-align: center; color: #1e3a8a; margin-bottom: 1rem; }
-.section-subtitle { font-size: 1.25rem; color: #2563eb; text-align: center; margin-bottom: 2rem; max-width: 36rem; margin-left: auto; margin-right: auto;}
-.card { background: white; border-radius: 0.75rem; box-shadow: 0 2px 8px #e5e7eb; padding: 1.5rem; transition: 0.3s; height: 100%; }
-.card:hover { transform: translateY(-0.5rem);}
-.method-card-number {position: absolute;top: -1.25rem;left: -1.25rem;width: 3rem;height: 3rem;background-color: #1e3a8a;color: white;border-radius: 50%; display: flex;align-items: center;justify-content: center;font-weight: 700;font-size: 1.25rem;border: 4px solid #f8fafc;}
-.loader {border: 4px solid #f3f3f3; border-radius: 50%;border-top: 4px solid #3b82f6;width: 40px; height: 40px;animation: spin 1s linear infinite; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-/* Added styles for upload area */
-.upload-area {border: 4px dashed #3b82f6; border-radius: 1rem;padding: 2rem; text-align: center; cursor: pointer; background-color: #bfdbfe;display: flex; flex-direction: column;align-items: center; justify-content: center;transition: background-color 0.3s, border-color 0.3s;outline-offset: 2px; }
-.upload-area:hover { background-color: #93c5fd; border-color: #2563eb;}
-.upload-area:focus-within { background-color: #60a5fa; border-color: #1e40af; outline: 2px solid #1e40af;}
-.upload-area svg { width: 24px; height: 24px; margin-bottom: 0.75rem; color: #2563eb;}
-.upload-area span { color: #1e40af; font-weight: 600; font-size: 1.125rem; max-width: 16rem; line-height: 1.4;}
-.upload-area input[type="file"] { display: none;}
-/* --- Added for SVG line animation --- */
-.ecg-line-animated {  stroke-dasharray: 3000;  stroke-dashoffset: 3000; animation: draw-line 4s linear infinite;}
-@keyframes draw-line {  0% {    stroke-dashoffset: 3000; }  100% {    stroke-dashoffset: 0;  }}
-/* Form specific small tweaks */
-.info-form .input { background: white; border: 1px solid #e6edf8; }
-.info-note { font-size: 0.9rem; color: #475569; }
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+    .hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+    .section-title { font-size: 2.25rem; font-weight: 800; text-align: center; color: #1e3a8a; margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.25rem; color: #2563eb; text-align: center; margin-bottom: 2rem; max-width: 36rem; margin-left: auto; margin-right: auto;}
+    .card { background: white; border-radius: 0.75rem; box-shadow: 0 2px 8px #e5e7eb; padding: 1.5rem; transition: 0.3s; height: 100%; }
+    .card:hover { transform: translateY(-0.5rem);}
+    .loader {border: 4px solid #f3f3f3; border-radius: 50%;border-top: 4px solid #3b82f6;width: 40px; height: 40px;animation: spin 1s linear infinite; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    /* Upload Area Styles */
+    .upload-area {border: 4px dashed #3b82f6; border-radius: 1rem;padding: 2rem; text-align: center; cursor: pointer; background-color: #bfdbfe;display: flex; flex-direction: column;align-items: center; justify-content: center;transition: background-color 0.3s, border-color 0.3s;outline-offset: 2px; }
+    .upload-area:hover { background-color: #93c5fd; border-color: #2563eb;}
+    .upload-area:focus-within { background-color: #60a5fa; border-color: #1e40af; outline: 2px solid #1e40af;}
+    .upload-area svg { width: 24px; height: 24px; margin-bottom: 0.75rem; color: #2563eb;}
+    .upload-area span { color: #1e40af; font-weight: 600; font-size: 1.125rem; max-width: 16rem; line-height: 1.4;}
+    .upload-area input[type="file"] { display: none;}
+    /* Form tweaks */
+    .info-form .input { background: white; border: 1px solid #e6edf8; }
+    .info-note { font-size: 0.9rem; color: #475569; }
 </style>
 </head>
 <body class="text-gray-700">
+
 <header class="bg-white/80 sticky top-0 z-50 shadow-sm">
 <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
 <a href="#home" class="text-2xl font-bold text-gray-800"><span class="text-blue-600">Beat</span>Sense 💓</a>
 <div class="hidden md:flex space-x-8">
 <a href="#home" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
 <a href="#introduction" class="text-gray-600 hover:text-blue-600 font-medium">Introduction</a>
-<a href="#working-principle" class="text-gray-600 hover:text-blue-600 font-medium">Working Principle</a>
 <a href="#live-demo" class="text-gray-600 hover:text-blue-600 font-medium">ECG Demo</a>
 <a href="#patient-upload" class="text-gray-600 hover:text-blue-600 font-medium">Upload ECG</a>
 <a href="#team" class="text-gray-600 hover:text-blue-600 font-medium">The Team</a>
 </div>
-<button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-gray-100 focus:outline-none">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-</button>
 </nav>
-<div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-<a href="#home" class="block py-2 text-gray-600 hover:text-blue-600 font-medium">Home</a>
-<a href="#introduction" class="block py-2 text-gray-600 hover:text-blue-600 font-medium">Introduction</a>
-<a href="#working-principle" class="block py-2 text-gray-600 hover:text-blue-600 font-medium">Working Principle</a>
-<a href="#live-demo" class="block py-2 text-gray-600 hover:text-blue-600 font-medium">ECG Demo</a>
-<a href="#patient-upload" class="block py-2 text-gray-600 hover:text-blue-600 font-medium">Upload ECG</a>
-<a href="#team" class="block py-2 text-gray-600 hover:text-blue-600 font-medium">The Team</a>
-</div>
 </header>
+
 <main>
 <section id="home" class="hero-gradient text-white relative overflow-hidden">
 <div class="absolute inset-0 bg-black opacity-10"></div>
@@ -65,6 +51,7 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
 <a href="#live-demo" class="bg-white text-blue-700 font-bold py-4 px-10 rounded-full text-lg hover:bg-blue-100 transition duration-300 transform hover:scale-105 shadow-2xl">Try Analysis Demo</a>
 </div>
 </section>
+
 <section id="introduction" class="py-24 bg-white">
   <div class="container mx-auto px-6">
     <h2 class="section-title">Introduction</h2>
@@ -73,76 +60,17 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
       <div class="space-y-6">
         <div>
           <h3 class="text-xl font-bold text-gray-800 mb-2">The Problem</h3>
-          <p class="text-lg text-gray-600">Cardiovascular diseases are the leading cause of death globally. Traditional ECG interpretation is slow and manual, making timely diagnosis of arrhythmias challenging, especially in resource-constrained settings.</p>
+          <p class="text-lg text-gray-600">Cardiovascular diseases are the leading cause of death globally. Traditional ECG interpretation is slow and manual, making timely diagnosis of arrhythmias challenging.</p>
         </div>
         <div>
           <h3 class="text-xl font-bold text-gray-800 mb-2">Our Solution</h3>
-          <p class="text-lg text-gray-600">BeatSense employs Python-based digital signal processing and machine learning to automate ECG segmentation and classification, accurately detecting arrhythmias at scale and helping clinicians save more lives.</p>
-        </div>
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg space-y-6">
-          <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Problem Statement</h3>
-            <p class="text-lg text-gray-600">The manual interpretation of ECG signals is time-consuming and requires specialized expertise. BeatSense aims to create an automated, reliable support system for ECG analysis that can accelerate triage and learning.</p>
-          </div>
+          <p class="text-lg text-gray-600">BeatSense employs Python-based digital signal processing and machine learning to automate ECG segmentation and classification, accurately detecting arrhythmias at scale.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<section id="objectives" class="py-24 bg-gray-50">
-  <div class="container mx-auto px-6">
-    <h2 class="section-title">Project Objectives</h2>
-    <p class="section-subtitle">The primary goals we aim to achieve with this project.</p>
-    <div class="max-w-4xl mx-auto">
-      <ul class="space-y-6">
-        <li class="flex items-start p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
-          <div class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600">
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-          </div>
-          <div class="ml-4">
-            <h3 class="text-lg font-semibold text-gray-900">1. Comprehensive Review</h3>
-            <p class="mt-2 text-base text-gray-700">To conduct a comprehensive review of existing ECG signal processing and arrhythmia detection methods.</p>
-          </div>
-        </li>
-        <li class="flex items-start p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
-          <div class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600">
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-            </svg>
-          </div>
-          <div class="ml-4">
-            <h3 class="text-lg font-semibold text-gray-900">2. System Design & Development</h3>
-            <p class="mt-2 text-base text-gray-700">To design and develop an automated ECG signal processing and arrhythmia detection system using Python, capable of achieving <strong>=90% sensitivity and specificity</strong>.</p>
-          </div>
-        </li>
-        <li class="flex items-start p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
-          <div class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600">
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-            </svg>
-          </div>
-          <div class="ml-4">
-            <h3 class="text-lg font-semibold text-gray-900">3. Performance Evaluation</h3>
-            <p class="mt-2 text-base text-gray-700">To analyze and evaluate the performance of the developed system, targeting <strong>AUROC = 0.95</strong> and a processing latency of <strong>&lt; 50 ms per beat</strong>.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-<section id="working-principle" class="py-24 bg-white">
-  <div class="container mx-auto px-6">
-    <h2 class="section-title">Working Principle</h2>
-    <p class="section-subtitle">How BeatSense analyzes ECG signals.</p>
-    <div class="max-w-4xl mx-auto text-center">
-      <p class="text-lg text-gray-600">BeatSense preprocesses incoming ECG signals to remove noise, detects R-peaks and segments individual beats, computes RR intervals and simple time-domain features, then applies rule-based classification (derived from established clinical heuristics) to suggest likely rhythm categories for educational demonstration.</p>
-      <p class="mt-4 info-note">Note: The on-site demo uses pre-computed results for MIT-BIH records and simulated analysis for user uploads to illustrate workflow and visualization — the aim is educational demonstration rather than clinical diagnosis.</p>
-    </div>
-  </div>
-</section>
+
 <section id="user-info" class="py-14 bg-white border-t border-b">
   <div class="container mx-auto px-6 max-w-4xl">
     <h2 class="section-title">Patient / User Info</h2>
@@ -150,31 +78,29 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
     <form id="user-info-form" class="info-form grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
       <div class="col-span-1 md:col-span-1">
         <label for="user-name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-        <input id="user-name" type="text" placeholder="" class="w-full p-3 rounded-lg input" />
+        <input id="user-name" type="text" placeholder="Enter Name" class="w-full p-3 rounded-lg input" />
       </div>
       <div class="col-span-1 md:col-span-1">
         <label for="user-age" class="block text-sm font-medium text-gray-700 mb-2">Age</label>
-        <input id="user-age" type="number" min="0" max="120" placeholder="" class="w-full p-3 rounded-lg input" />
+        <input id="user-age" type="number" min="0" max="120" placeholder="Age" class="w-full p-3 rounded-lg input" />
       </div>
       <div class="col-span-1 md:col-span-1">
         <label for="user-gender" class="block text-sm font-medium text-gray-700 mb-2">Gender</label>
         <select id="user-gender" class="w-full p-3 rounded-lg input">
-          <option value="">Prefer not to say</option>
-          <option value="Female">Female</option>
           <option value="Male">Male</option>
+          <option value="Female">Female</option>
           <option value="Other">Other</option>
         </select>
-      </div>
-      <div class="md:col-span-3 text-sm text-gray-500 mt-2">
-        <p class="info-note">This information is used only to label the demo output for educational purposes and is not stored or sent anywhere.</p>
       </div>
     </form>
   </div>
 </section>
+
 <section id="live-demo" class="py-24 bg-blue-50">
 <div class="container mx-auto px-6">
 <h2 class="section-title">Live Analysis Demo</h2>
-<p class="section-subtitle">Choose a record from the <a href="https://physionet.org/content/mitdb/1.0.0/" target="_blank" rel="noopener noreferrer" class="text-blue-700 underline hover:text-blue-800 font-medium">MIT-BIH Arrhythmia Database</a> below to see our algorithm's pre-computed analysis for that file.</p>
+<p class="section-subtitle">Choose a record from the MIT-BIH Arrhythmia Database below to see our algorithm's analysis.</p>
+
 <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-xl border border-gray-200 text-center">
 <div class="mb-6">
 <label for="ecg-record-select" class="block text-lg font-medium text-gray-700 mb-2">MIT-BIH Record Selection:</label>
@@ -187,94 +113,67 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
 <option value="104">Record 104</option>
 <option value="105">Record 105</option>
 <option value="106">Record 106</option>
-<option value="107">Record 107</option>
-<option value="108">Record 108</option>
-<option value="109">Record 109</option>
-<option value="111">Record 111</option>
-<option value="112">Record 112</option>
-<option value="113">Record 113</option>
-<option value="114">Record 114</option>
-<option value="115">Record 115</option>
-<option value="116">Record 116</option>
-<option value="117">Record 117</option>
-<option value="118">Record 118</option>
-<option value="119">Record 119</option>
-<option value="121">Record 121</option>
-<option value="122">Record 122</option>
-<option value="123">Record 123</option>
-<option value="124">Record 124</option>
-<option value="200">Record 200</option>
+<option value="200">Record 200 (PVC)</option>
 <option value="201">Record 201</option>
-<option value="202">Record 202</option>
 <option value="203">Record 203</option>
-<option value="205">Record 205</option>
-<option value="207">Record 207</option>
-<option value="208">Record 208</option>
-<option value="209">Record 209</option>
 <option value="210">Record 210</option>
-<option value="212">Record 212</option>
 <option value="213">Record 213</option>
-<option value="214">Record 214</option>
-<option value="215">Record 215</option>
-<option value="217">Record 217</option>
 <option value="219">Record 219</option>
-<option value="220">Record 220</option>
-<option value="221">Record 221</option>
-<option value="222">Record 222</option>
-<option value="223">Record 223</option>
-<option value="228">Record 228</option>
-<option value="230">Record 230</option>
-<option value="231">Record 231</option>
-<option value="232">Record 232</option>
 <option value="233">Record 233</option>
-<option value="234">Record 234</option>
 </select>
 </div>
-<button id="analyze-button" class="w-full bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105 shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>Show Analysis</button>
+<button id="analyze-button" class="w-full bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105 shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed">Show Analysis</button>
 </div>
+
 <div id="results-area" class="max-w-4xl mx-auto mt-12 hidden">
   <div id="loader-container" class="text-center">
     <div class="loader mx-auto"></div>
-    <p class="text-lg text-gray-600 mt-4 font-semibold">Loading analysis... Please wait.</p>
+    <p class="text-lg text-gray-600 mt-4 font-semibold">Processing signal... Please wait.</p>
   </div>
+  
   <div id="report-container" class="hidden">
-    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Analysis Complete: Results</h3>
+    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Analysis Results</h3>
     <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200 overflow-hidden">
+      
       <div class="mb-6 text-center">
-        <p id="result-subject" class="font-semibold text-gray-700">Results for: <span id="subject-values" class="font-bold text-gray-900">Anonymous</span></p>
+        <p id="result-subject" class="font-semibold text-gray-700">Patient: <span id="subject-values" class="font-bold text-gray-900">Anonymous</span></p>
       </div>
-      <div id="chart-container" class="bg-white rounded-lg shadow-inner border border-gray-100 mb-8 w-full overflow-hidden"></div>
+
+      <div id="chart-container" class="bg-white rounded-lg shadow-inner border border-gray-100 mb-8 w-full h-64 overflow-hidden flex items-center justify-center">
+          </div>
+
       <div class="grid md:grid-cols-2 gap-8 items-center">
         <div class="space-y-4">
           <div class="pb-3 border-b border-gray-200">
-            <p class="text-sm text-gray-500">Input File</p>
+            <p class="text-sm text-gray-500">Record ID</p>
             <p id="result-file-name" class="font-bold text-lg text-gray-800"><code class="bg-gray-100 text-gray-700 px-2 py-1 rounded-md"></code></p>
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div>
               <p class="text-sm text-gray-500">Heart Rate</p>
-              <p id="result-bpm" class="font-bold text-xl"></p>
+              <p id="result-bpm" class="font-bold text-xl text-blue-600">-- BPM</p>
             </div>
             <div>
-              <p class="text-sm text-gray-500">Rhythm</p>
-              <p id="result-rhythm" class="font-bold text-xl"></p>
+              <p class="text-sm text-gray-500">Detected Rhythm</p>
+              <p id="result-rhythm" class="font-bold text-xl text-blue-600">--</p>
             </div>
           </div>
           <div>
-            <p class="text-sm text-gray-500">Classification</p>
-            <p id="result-classification" class="font-bold text-lg text-gray-800"></p>
+            <p class="text-sm text-gray-500">Primary Classification</p>
+            <p id="result-classification" class="font-bold text-lg text-gray-800">--</p>
           </div>
         </div>
-        <div id="result-recommendation" class="p-6 rounded-xl text-center">
-          <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <h4 id="recommendation-title" class="text-xl font-bold"></h4>
-          <p id="recommendation-text" class="mt-2"></p>
+
+        <div id="result-recommendation" class="p-6 rounded-xl text-center bg-gray-50">
+          <h4 id="recommendation-title" class="text-xl font-bold">Analysis Pending</h4>
+          <p id="recommendation-text" class="mt-2 text-sm">Select a record to view clinical recommendations.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 </section>
+
 <section id="patient-upload" class="py-24 bg-gradient-to-r from-blue-50 to-blue-100">
 <div class="container mx-auto px-6 max-w-3xl text-center">
 <h2 class="section-title text-blue-700">Upload Your ECG Reading</h2>
@@ -284,64 +183,162 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
 <span>Click to select or drag your <span class="underline decoration-blue-600">ECG file</span> here</span>
 <input type="file" id="ecg-upload" accept=".mat,.csv,.txt" />
 </label>
-<button id="upload-analyze-button" class="w-full mt-6 bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105 shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>Analyze Uploaded ECG</button>
-<p id="upload-feedback" class="mt-4 text-sm text-blue-700 min-h-[1.25rem]"></p>
+<button disabled class="w-full mt-6 bg-gray-400 text-white font-bold py-3 px-8 rounded-lg text-lg cursor-not-allowed">Analyze Upload (Coming Soon)</button>
 </div>
 </section>
+
 <section id="team" class="py-24 bg-white">
 <div class="container mx-auto px-6">
 <h2 class="section-title">The Research Team</h2>
 <p class="section-subtitle">Meet the dedicated team advancing BeatSense.</p>
-<div class="max-w-5xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-<div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
-<div class="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden shadow-inner border border-gray-200">
-<img src="https://i.imgur.com/GSzk4yO.jpeg" alt="Shena Marie Espelita" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/96x96/e0e7ff/3730a3?text=SM'" />
-</div>
-<h3 class="text-xl font-bold text-gray-800">Shena Marie Espelita</h3>
-<p class="text-blue-600 font-medium">Project Author</p>
-</div>
-<div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
-<div class="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden shadow-inner border border-gray-200">
-<img src="https://i.imgur.com/IkUCRe5.jpeg" alt="Jashley Mae Alcances" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/96x96/e0e7ff/3730a3?text=JA'" />
-</div>
-<h3 class="text-xl font-bold text-gray-800">Jashley Mae Alcances</h3>
-<p class="text-blue-600 font-medium">Project Author</p>
-</div>
-<div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
-<div class="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden shadow-inner border border-gray-200">
-<img src="https://i.imgur.com/pSV6VoE.jpeg" alt="Ylona Leigh Balahadia" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/96x96/e0e7ff/3730a3?text=YB'" />
-</div>
-<h3 class="text-xl font-bold text-gray-800">Ylona Leigh Balahadia</h3>
-<p class="text-blue-600 font-medium">Project Author</p>
-</div>
-<div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
-<div class="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden shadow-inner border border-gray-200">
-<img src="https://i.imgur.com/qB6204N.jpeg" alt="Mhekyla Ramirez" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/96x96/e0e7ff/3730a3?text=MR'" />
-</div>
-<h3 class="text-xl font-bold text-gray-800">Mhekyla Ramirez</h3>
-<p class="text-blue-600 font-medium">Project Author</p>
-</div>
-</div>
-<div class="text-center">
-<div class="inline-block bg-green-50 border border-green-200 rounded-xl shadow-md p-6 text-center !px-10">
-<div class="w-24 h-24 rounded-full mx-auto mb-4 bg-green-100 flex items-center justify-center">
-<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814"></path></svg>
-</div>
-<h3 class="text-xl font-bold text-gray-800">Dr. Abid Yahya</h3>
-<p class="text-green-700 font-semibold">Faculty Advisor</p>
-</div>
+<div class="max-w-5xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+<div class="bg-white rounded-xl shadow-md p-6 text-center"><h3 class="text-xl font-bold text-gray-800">Shena Marie Espelita</h3><p class="text-blue-600">Project Author</p></div>
+<div class="bg-white rounded-xl shadow-md p-6 text-center"><h3 class="text-xl font-bold text-gray-800">Jashley Mae Alcances</h3><p class="text-blue-600">Project Author</p></div>
+<div class="bg-white rounded-xl shadow-md p-6 text-center"><h3 class="text-xl font-bold text-gray-800">Ylona Leigh Balahadia</h3><p class="text-blue-600">Project Author</p></div>
+<div class="bg-white rounded-xl shadow-md p-6 text-center"><h3 class="text-xl font-bold text-gray-800">Mhekyla Ramirez</h3><p class="text-blue-600">Project Author</p></div>
 </div>
 </div>
 </section>
+
 <section id="disclaimer" class="py-8 bg-yellow-50">
 <div class="container mx-auto px-6 max-w-4xl">
 <div class="rounded-lg border border-yellow-200 p-6 bg-yellow-50">
 <h4 class="font-bold text-yellow-800 text-lg">Disclaimer</h4>
-<p class="mt-2 text-yellow-700">
-<strong>Educational purposes only:</strong> This system is a research prototype and is not intended for clinical diagnosis.</p>
+<p class="mt-2 text-yellow-700"><strong>Educational purposes only:</strong> This system is a research prototype and is not intended for clinical diagnosis.</p>
 </div>
 </div>
 </section>
 </main>
+
+<script>
+// 1. Grab Elements
+const analyzeBtn = document.getElementById('analyze-button');
+const recordSelect = document.getElementById('ecg-record-select');
+const resultsArea = document.getElementById('results-area');
+const loader = document.getElementById('loader-container');
+const reportContainer = document.getElementById('report-container');
+
+// 2. Add Click Listener
+analyzeBtn.addEventListener('click', async () => {
+    const recordId = recordSelect.value;
+    
+    // User Input Validation
+    const userName = document.getElementById('user-name').value || "Anonymous";
+    const userAge = document.getElementById('user-age').value || "--";
+    const userGender = document.getElementById('user-gender').value;
+    
+    if (!recordId) {
+        alert("Please select a record first.");
+        return;
+    }
+
+    // Show UI Loading state
+    analyzeBtn.disabled = true;
+    analyzeBtn.innerText = "Processing...";
+    resultsArea.classList.remove('hidden');
+    loader.classList.remove('hidden');
+    reportContainer.classList.add('hidden');
+    
+    // Update Subject Values
+    document.getElementById('subject-values').innerText = `${userName} (${userAge} yrs, ${userGender})`;
+
+    try {
+        // 3. TALK TO PYTHON (The Fetch API)
+        // Note: Ensure your Flask app is running on port 5000
+        const response = await fetch('/analyze_record', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ record_id: recordId })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            // 4. Update the UI with Python Data
+            document.getElementById('result-bpm').innerText = data.bpm + " BPM";
+            document.getElementById('result-rhythm').innerText = data.rhythm;
+            document.getElementById('result-classification').innerText = data.diagnosis;
+            document.getElementById('result-file-name').innerText = "MIT-BIH Record " + recordId;
+            
+            // Update Recommendation Box
+            document.getElementById('recommendation-title').innerText = data.recommendation_title;
+            document.getElementById('recommendation-text').innerText = data.recommendation_text;
+            
+            const recBox = document.getElementById('result-recommendation');
+            if(data.diagnosis.includes("Normal")) {
+                recBox.className = "p-6 rounded-xl text-center bg-green-50 text-green-800 border border-green-200";
+            } else {
+                recBox.className = "p-6 rounded-xl text-center bg-red-50 text-red-800 border border-red-200";
+            }
+
+            // 5. Draw the Graph (SVG)
+            drawECGGraph(data.signal_data);
+
+            // Show results
+            loader.classList.add('hidden');
+            reportContainer.classList.remove('hidden');
+        } else {
+            alert("Error analyzing record: " + data.error);
+            loader.classList.add('hidden');
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Server error. Ensure 'app.py' is running.");
+        loader.classList.add('hidden');
+    } finally {
+        analyzeBtn.disabled = false;
+        analyzeBtn.innerText = "Show Analysis";
+    }
+});
+
+// Enable button when dropdown changes
+recordSelect.addEventListener('change', function() {
+    if(this.value) {
+        analyzeBtn.disabled = false;
+        analyzeBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+});
+
+// Function to draw the ECG line inside the container
+function drawECGGraph(dataPoints) {
+    const container = document.getElementById('chart-container');
+    container.innerHTML = ''; // Clear old chart
+    
+    if(!dataPoints || dataPoints.length === 0) return;
+
+    // Create SVG element
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+    svg.setAttribute("viewBox", `0 0 ${dataPoints.length} 300`);
+    svg.setAttribute("preserveAspectRatio", "none");
+    
+    // Create Grid Pattern (Optional visual flair)
+    // ... (omitted for simplicity, but you can add <defs> here if you want grid lines) ...
+
+    // Create the path string
+    // Map signal data (roughly -2 to 2) to SVG height (0 to 300)
+    // Inverting Y because SVG 0 is at the top
+    let pathD = "M 0 150 ";
+    dataPoints.forEach((val, index) => {
+        // Normalize: Assuming signal is between -3 and 3. 
+        // Scale factor 50, Offset 150 (center)
+        const y = 150 - (val * 40); 
+        pathD += `L ${index} ${y} `;
+    });
+
+    const path = document.createElementNS(svgNS, "path");
+    path.setAttribute("d", pathD);
+    path.setAttribute("fill", "none");
+    path.setAttribute("stroke", "#2563eb");
+    path.setAttribute("stroke-width", "2");
+    path.setAttribute("vector-effect", "non-scaling-stroke"); // Keeps line thin even if stretched
+    
+    svg.appendChild(path);
+    container.appendChild(svg);
+}
+</script>
 </body>
 </html>
